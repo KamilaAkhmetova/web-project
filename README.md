@@ -27,5 +27,7 @@ Student-specific information such as profile details, personalized settings, and
 
 # Group Members
 Kazenova Ayaulym
+
 Bolyskhan Yeralim
+
 Kamila Akhmetova
