@@ -1,4 +1,39 @@
-<nav class="main-nav">
+<header>
+    <div class="header-1">
+        <div class="header-2">
+                <button class="menu-button" [class.open]="isMenuOpen()" (click)="toggleMenu()">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </button>
+            <div class="logo">
+                <img src="/kbtu_logo.png" alt="kbtu logo" height="34px">
+            </div>
+            <div class="logo">
+                <img src="/account_logo.webp" alt="account logo" height="34px">
+            </div>
+        </div>
+    </div>
+    <nav class="mobile-nav" [class.open]="isMenuOpen()">
+        <ul>
+            <li><a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Main</a></li>
+            <li><a routerLink="/schedules" routerLinkActive="active" (click)="closeMenu()">Schedule</a></li>
+            <li><a routerLink="/buffets" routerLinkActive="active" (click)="closeMenu()">Canteens</a></li>
+            <li><a routerLink="/account" routerLinkActive="active" (click)="closeMenu()">Profile</a></li>
+            @if (!isLoggedIn()) {
+                <li><a routerLink="/login" routerLinkActive="active" (click)="closeMenu()">Log in</a></li>
+            }
+            @if (isLoggedIn()) {
+                <li><button (click)="logout(); closeMenu()">Log out</button></li>
+            }
+        </ul>
+    </nav>
+</header>
+
+<main class="content" (click)="closeMenu()">
+    <router-outlet></router-outlet>
+</main>
+<!-- <nav class="main-nav">
   <ul>
     <li><a routerLink="/dashboard" routerLinkActive="active">Main</a></li>
     <li><a routerLink="/schedules" routerLinkActive="active">Schedule</a></li>
@@ -11,7 +46,7 @@
 
 <main class="content">
   <router-outlet></router-outlet>  
-</main>
+</main> -->
 
 <!-- <footer class="footer">
   <p>StudyBuddy © 2025</p>
