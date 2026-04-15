@@ -1,0 +1,126 @@
+<div class="dashboard-container">
+    <div class="welcome-section">
+        <h1>Welcome back, {{ studentName }}! 👋</h1>
+        <p>Here's what's happening today at KBTU</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- ЛЕВАЯ КОЛОНКА -->
+        <div class="left-column">
+            <!-- Секция: Расписание на сегодня -->
+            <div class="card schedule-card">
+                <div class="card-header">
+                    <h2>📅 Today's Schedule</h2>
+                    <a routerLink="/schedules" class="view-all">View all →</a>
+                </div>
+                <div class="card-content">
+                    @if (todaySchedule.length === 0) {
+                        <div class="empty-state">
+                            <p>No schedule for today 🎉</p>
+                            <small>Enjoy your free time!</small>
+                        </div>
+                    } @else {
+                        <div class="schedule-list">
+                            @for (item of todaySchedule; track item.id) {
+                                <div class="schedule-item">
+                                    <div class="schedule-time">{{ item.time }}</div>
+                                    <div class="schedule-info">
+                                        <div class="schedule-course">{{ item.course }}</div>
+                                        <div class="schedule-location">{{ item.location }}</div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Секция: Быстрые ссылки -->
+            <div class="card quick-links-card">
+                <div class="card-header">
+                    <h2>🔗 Quick Links</h2>
+                </div>
+                <div class="card-content">
+                    <div class="links-grid">
+                        <a href="https://studis.kbtu.kz" target="_blank" class="quick-link">
+                            <div class="link-icon">📚</div>
+                            <span>Studis</span>
+                        </a>
+                        <a href="https://elearning.kbtu.kz" target="_blank" class="quick-link">
+                            <div class="link-icon">💻</div>
+                            <span>eLearning</span>
+                        </a>
+                        <a href="https://intraportal.kbtu.kz" target="_blank" class="quick-link">
+                            <div class="link-icon">🏛️</div>
+                            <span>Intraportal</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <div class="link-icon">🗺️</div>
+                            <span>Campus Map</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <div class="link-icon">📧</div>
+                            <span>Email</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <div class="link-icon">📊</div>
+                            <span>Grades</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА -->
+        <div class="right-column">
+            <!-- Секция: Новости -->
+            <div class="card news-card">
+                <div class="card-header">
+                    <h2>📰 Notifications & News</h2>
+                    <a routerLink="/news" class="view-all">View all →</a>
+                </div>
+                <div class="card-content">
+                    <div class="news-list">
+                        @for (news of newsList; track news.id) {
+                            <div class="news-item">
+                                <div class="news-icon">🎵</div>
+                                <div class="news-content">
+                                    <div class="news-title">{{ news.title }}</div>
+                                    <div class="news-date">{{ news.date }}</div>
+                                    <div class="news-excerpt">{{ news.excerpt }}</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция: Статистика / Инфо -->
+            <div class="card stats-card">
+                <div class="card-header">
+                    <h2>📊 My Stats</h2>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">3.8</div>
+                            <div class="stat-label">GPA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Courses</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-label">Attendance</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Credits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
