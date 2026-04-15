@@ -1,0 +1,51 @@
+<div class="profile-container">
+    <div class="profile-card" *ngIf="!isLoading && user">
+        <div class="kbtu-header">
+            <h1>KAZAKH-BRITISH<br>TECHNICAL UNIVERSITY</h1>
+        </div>
+        
+        <div class="profile-header">
+            <div class="avatar">
+                <div class="avatar-circle">{{ (user.full_name?.charAt(0)) || user.username.charAt(0) }}</div>
+            </div>
+            <h2>{{ user.full_name || user.username }}</h2>
+            <p class="role" [class.teacher]="user.is_teacher">
+                {{ user.is_teacher ? 'Преподаватель' : 'Студент' }}
+            </p>
+        </div>
+        
+        <div class="profile-info">
+            <div class="info-item">
+                <span class="label">ID:</span>
+                <span class="value">{{ user.id }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Username:</span>
+                <span class="value">{{ user.username }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Email:</span>
+                <span class="value">{{ user.email }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Полное имя:</span>
+                <span class="value">{{ user.full_name || 'Не указано' }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Группа:</span>
+                <span class="value">{{ user.practice_group || 'Не указано' }}</span>
+            </div>
+        </div>
+        
+        <button class="btn-logout" (click)="logout()">Выйти из системы</button>
+    </div>
+    
+    <div class="loading" *ngIf="isLoading">
+        <div class="spinner"></div>
+        <p>Загрузка профиля...</p>
+    </div>
+    
+    <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+</div>

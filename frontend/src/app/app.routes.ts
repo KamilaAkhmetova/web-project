@@ -1,15 +1,19 @@
 import { Routes } from '@angular/router';
-import { Dashboard} from './components/dashboard/dashboard';
-import { Schedules} from './components/schedules/schedules';
-import { Buffets} from './components/buffets/buffets';
-import { Account} from './components/account/account';
-import { Login} from './components/login/login';
+import { Dashboard } from './components/dashboard/dashboard';
+import { Schedules } from './components/schedules/schedules';
+import { Buffets } from './components/buffets/buffets';
+import { Account } from './components/account/account';
+import { LoginComponent } from './components/login/login';
+import { RegisterComponent } from './components/register/register';
+import { ProfileComponent } from './components/profile/profile';
 
 export const routes: Routes = [
-    { path: 'login', component: Login},
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'profile', component: ProfileComponent },
     { path: 'dashboard', component: Dashboard },
     { path: 'schedules', component: Schedules },
-    { path: 'buffets', component: Buffets},
+    { path: 'buffets', component: Buffets },
     { path: 'account', component: Account },
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', redirectTo: '/dashboard' }

@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from .serializers import RegisterSerializer, UserSerializer, ProfileUpdateSerializer, ProfileResponseSerializer
+from .serializers import RegisterSerializer, UserSerializer
 
 User = get_user_model()
 
@@ -54,34 +54,19 @@ def logout_view(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def profile_view(request):
+    """Получить профиль текущего пользователя"""
+    serializer = UserSerializer(request.user)
+    return Response({
+        'status': 'success',
+        'data': serializer.data
+    })
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def check_auth_view(request):
     return Response({
         'is_authenticated': True,
         'user': UserSerializer(request.user).data
     })
-
-
-class ProfileView(APIView):
-    permission_classes = [IsAuthenticated]
-    
-    def get(self, request):
-        serializer = ProfileResponseSerializer(request.user)
-        return Response({
-            'status': 'success',
-            'data': serializer.data
-        })
-    
-    def put(self, request):
-        serializer = ProfileUpdateSerializer(request.user, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            response_serializer = ProfileResponseSerializer(request.user)
-            return Response({
-                'status': 'success',
-                'message': 'Профиль успешно обновлен',
-                'data': response_serializer.data
-            })
-        return Response({
-            'status': 'error',
-            'errors': serializer.errors
-        }, status=status.HTTP_400_BAD_REQUEST)
