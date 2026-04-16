@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "studybuddy", 
     "auth_app",
     'buffets',
+    "dashboard",
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,16 @@
+<div class="modal-overlay" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="close()">✕</button>
+            
+        @if (news) {
+            <h2>{{ news.title }}</h2>
+            <div class="modal-meta">
+                <span>📅 {{ news.formatted_date }}</span>
+                <span>✍️ {{ news.author_name }}</span>
+            </div>
+            <div class="modal-body">
+                {{ news.content }}
+            </div>
+        }
+    </div>
+</div>

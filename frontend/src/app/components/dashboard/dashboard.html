@@ -23,3 +23,33 @@
         </div>
     </div>
 </div>
+<div class="card news-card">
+    <div class="card-header">
+        <h2>📰 Последние новости</h2>
+        <a routerLink="/news" class="view-all">Все новости →</a>
+    </div>
+    <div class="card-content">
+        @if (isLoadingNews) {
+            <div class="loading">Загрузка новостей...</div>
+        } @else {
+            <div class="news-list">
+                @for (news of newsList; track news.id) {
+                    <div class="news-item" (click)="openNewsModal(news)">
+                        <div class="news-icon">📢</div>
+                        <div class="news-content">
+                            <div class="news-title">{{ news.title }}</div>
+                            <div class="news-date">{{ news.formatted_date }}</div>
+                            <div class="news-excerpt">{{ news.preview }}</div>
+                            <div class="news-read-more">Читать далее →</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        
+    </div>
+
+</div>
+@if (showModal) {
+    <app-news-modal [news]="selectedNews" (closed)="closeModal()"></app-news-modal>
+}

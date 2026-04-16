@@ -1,6 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { News } from '../models/news';
 
-@Injectable({
-  providedIn: 'root',
+@Injectable({ 
+    providedIn: 'root' 
 })
-export class News {}
+export class NewsService {
+    private apiUrl = 'http://localhost:8000/api';
+
+    constructor(private http: HttpClient) {}
+
+    getNews(): Observable<News[]> {
+        return this.http.get<News[]>(`${this.apiUrl}/news/`);
+    }
+
+    getNewsById(id: number): Observable<News> {
+        return this.http.get<News>(`${this.apiUrl}/news/${id}/`);
+    }
+}
