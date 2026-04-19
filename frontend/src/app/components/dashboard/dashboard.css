@@ -1,8 +1,11 @@
-.dashboard-container {
+/* .dashboard-container {
     min-height: 100vh;
+    background-color: rgb(240, 242, 255);
     background: linear-gradient(135deg, #F4F5FA 0%, #ECEFFE 100%);
-}
-
+} */
+/* html, body{
+    background-color: rgb(19, 41, 75);
+} */
 .dashboard-header {
     background: #002F6C;
     padding: 30px;

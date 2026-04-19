@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NewsService } from '../../services/news';
 import { NewsModalComponent } from '../news-modal/news-modal';
-
-// Временно уберём интерфейс, чтобы проверить работу
-// import { News } from '../../models/news.interface';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,25 +13,27 @@ import { NewsModalComponent } from '../news-modal/news-modal';
   styleUrl: './dashboard.css',
 })
 export class DashboardComponent implements OnInit {
-  // Свойства для шаблона
   isLoadingNews = true;
   newsList: any[] = [];  // временно any, потом заменим на News[]
   selectedNews: any = null;
   showModal = false;
   
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private cdr: ChangeDetectorRef
+) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadNews();
   }
 
   loadNews() {
     this.newsService.getNews().subscribe({
-    next: (data: any) => {  
-        console.log('Данные с бэкенда:', data);  
-        console.log('Первая новость:', data[0]);          
+    next: (data: any) => {            
         this.newsList = data.slice(0, 5);
         this.isLoadingNews = false;
+
+        this.cdr.detectChanges();
     },
     error: (err: any) => {           
         console.error('Ошибка:', err);
