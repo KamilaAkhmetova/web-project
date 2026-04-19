@@ -29,7 +29,9 @@ export class DashboardComponent implements OnInit {
 
   loadNews() {
     this.newsService.getNews().subscribe({
-    next: (data: any) => {           
+    next: (data: any) => {  
+        console.log('Данные с бэкенда:', data);  
+        console.log('Первая новость:', data[0]);          
         this.newsList = data.slice(0, 5);
         this.isLoadingNews = false;
     },
