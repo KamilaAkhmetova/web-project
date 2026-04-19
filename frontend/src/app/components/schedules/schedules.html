@@ -1,1 +1,42 @@
-<p>schedules works!</p>
+<div class="schedule-container">
+    <div class="schedule-header">
+        <h1>SCHEDULE</h1>
+        <p>{{ currentWeek }} week, {{ semesterType }}</p>
+    </div>
+    
+    <div class="week-days">
+        <div class="day-header" *ngFor="let day of weekDays">
+            <span class="day-name">{{ day.name }}</span>
+            <span class="day-date">{{ day.date }}</span>
+        </div>
+    </div>
+    
+    <div class="schedule-table">
+        <div class="time-slots">
+            @for (time of timeSlots; track time) {
+                <div class="time-slot">{{ time }}</div>
+            }
+        </div>
+        
+        <div class="schedule-grid">
+            @for (day of weekDays; track day.index) {
+                <div class="day-column">
+                    @for (time of timeSlots; track time) {
+                        <div class="lesson-cell" 
+                             [class.has-lesson]="getLesson(day.index, time)"
+                             (click)="openLessonModal(getLesson(day.index, time))">
+                            
+                            @if (getLesson(day.index, time)) {
+                                <div class="lesson-info">
+                                    <div class="lesson-name">{{ getLesson(day.index, time).course.name }}</div>
+                                    <div class="lesson-type">{{ getLesson(day.index, time).course.get_lesson_type_display }}</div>
+                                    <div class="lesson-room">{{ getLesson(day.index, time).course.room }}</div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
