@@ -6,11 +6,12 @@ import { NewsService } from '../../services/news';
   selector: 'app-news-modal',
   standalone: true,
   imports: [CommonModule],
-  template: `./news-modal.html`,
-  styles: [`./news-modal.css`]
+  templateUrl: './news-modal.html',  
+  styleUrls: ['./news-modal.css'] 
 })
 export class NewsModalComponent {
-    @Input() news: any = null;
+    @Input() news: any;
+    // @Input() news: any = null;
     @Output() closed = new EventEmitter<void>();
 
     close() {

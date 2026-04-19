@@ -14,7 +14,9 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   isLoadingNews = true;
-  newsList: any[] = [];  // временно any, потом заменим на News[]
+  newsList: any[] = [];
+  allNewsList: any[] = [];      
+  showLoadMore = false;
   selectedNews: any = null;
   showModal = false;
   
@@ -28,23 +30,32 @@ export class DashboardComponent implements OnInit {
   }
 
   loadNews() {
-    this.newsService.getNews().subscribe({
-    next: (data: any) => {            
-        this.newsList = data.slice(0, 5);
-        this.isLoadingNews = false;
+  this.newsService.getNews().subscribe({
+    next: (data: any) => {
+      this.allNewsList = data;                 // 👈 сохраняем ВСЁ
+      this.newsList = data.slice(0, 5);        // 👈 показываем 5
 
-        this.cdr.detectChanges();
+      this.showLoadMore = data.length > 5;     // 👈 показывать кнопку?
+
+      this.isLoadingNews = false;
+      this.cdr.detectChanges();
     },
-    error: (err: any) => {           
-        console.error('Ошибка:', err);
-        this.isLoadingNews = false;
+    error: (err: any) => {
+      console.error('Ошибка:', err);
+      this.isLoadingNews = false;
     }
-});
+  });
+}
+  loadAllNews() {
+    this.newsList = this.allNewsList;      
+    this.showLoadMore = false;   
+    this.cdr.detectChanges();          
   }
 
   
 
   openNewsModal(news: any) {
+    console.log('CLICK NEWS:', news);
     this.selectedNews = news;
     this.showModal = true;
   }

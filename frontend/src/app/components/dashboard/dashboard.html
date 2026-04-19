@@ -40,7 +40,14 @@
                     </div>
                 </div>
             }
-        </div>        
+        </div>
+        @if (showLoadMore) {
+            <div class="load-more-container">
+                <button (click)="loadAllNews()" class="load-more-btn">
+                    Load All News
+                </button>
+            </div>
+        }        
     </div>
 
 </div>
