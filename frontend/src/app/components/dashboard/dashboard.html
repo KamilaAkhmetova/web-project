@@ -23,3 +23,34 @@
         </div>
     </div>
 </div>
+<div class="card news-card">
+    <div class="card-header">
+        <h2 style="text-align: center; color: rgb(0, 47, 108);">NEWS</h2>
+    </div>
+    <div class="card-content">
+        
+        <div class="news-list">
+            @for (news of newsList; track news.id) {
+                <div class="news-item" (click)="openNewsModal(news)">
+                    <div class="news-content">
+                        <div class="news-title">{{ news.title }}</div>
+                        <div class="news-date">{{ news.formatted_date }}</div>
+                        <div class="news-excerpt">{{ news.preview }}</div>
+                        <div class="news-read-more">Read more →</div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (showLoadMore) {
+            <div class="load-more-container">
+                <button (click)="loadAllNews()" class="load-more-btn">
+                    Load All News
+                </button>
+            </div>
+        }        
+    </div>
+
+</div>
+@if (showModal) {
+    <app-news-modal [news]="selectedNews" (closed)="closeModal()"></app-news-modal>
+}
