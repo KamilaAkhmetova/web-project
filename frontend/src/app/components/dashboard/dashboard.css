@@ -6,12 +6,71 @@
 /* html, body{
     background-color: rgb(19, 41, 75);
 } */
-.dashboard-header {
-    background: #002F6C;
-    padding: 30px;
-    text-align: center;
+
+/* dashboard.css */
+
+/* Фон для всей страницы дашборда */
+:host {
+    display: block;
+    min-height: 100vh;
+    /* background-image: url('/kbtu_1.jpg'); */
+    /* Здесь укажите путь к вашему изображению */
+    /* background-size: cover;
+    background-position: center;
+    background-attachment: fixed; Эффект параллакса */
 }
 
+/* Добавим поверх фона полупрозрачную подложку, чтобы текст читался лучше */
+.dashboard-wrapper {
+    background-color: rgba(255, 255, 255, 0.85);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+.dashboard-header {
+    padding: 30px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.dashboard-container{
+    background-image: url('/kbtu.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 40px 20px 60px;
+    margin-bottom: 30px;
+
+}
+
+/* aa */
+.dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 47, 108, 0.6);
+    z-index: 0;
+}
+.dashboard-header,
+.quick-links-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Хедер */
+.dashboard-header {
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px;
+    backdrop-filter: blur(2px);
+}
 .dashboard-header h1 {
     color: white;
     font-size: 24px;
@@ -144,4 +203,61 @@
 .load-more-btn:hover {
     background: rgb(136, 152, 232);
     transform: translateY(-2px);
+}
+
+.today-date {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Стили для Quick Links */
+.quick-links-section {
+    margin-bottom: 40px;
+}
+
+.quick-links-section h2 {
+    text-align: center;
+    color: #002F6C;
+    margin-bottom: 20px;
+}
+
+.quick-links-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.quick-link-card {
+    background: rgb(240, 242, 255);
+    padding: 20px 30px;
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #002F6C;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 120px;
+}
+
+.quick-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.link-icon {
+    width: 32px;           /* Фиксированная ширина */
+    height: 32px;          /* Фиксированная высота */
+    object-fit: contain;   /* Сохраняет пропорции, не обрезает */
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/* .link-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+} */
+
+.quick-link-card span {
+    font-size: 14px;
+    font-weight: 500;
 }

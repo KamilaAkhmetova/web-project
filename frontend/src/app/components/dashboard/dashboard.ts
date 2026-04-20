@@ -13,6 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './dashboard.css',
 })
 export class DashboardComponent implements OnInit {
+  todayDate: Date = new Date();
   isLoadingNews = true;
   newsList: any[] = [];
   allNewsList: any[] = [];      

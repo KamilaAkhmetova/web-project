@@ -1,25 +1,29 @@
 <div class="dashboard-container">
     <div class="dashboard-header">
-        <h1>KAZAKH-BRITISH<br>TECHNICAL UNIVERSITY</h1>
+        <h1 style="color: rgb(244, 245, 250);">{{ todayDate | date:'EEEE, d MMMM yyyy' }}</h1>
+        <!-- <div class="today-date">{{ todayDate | date:'EEEE, d MMMM yyyy' }}</div> -->
     </div>
     
-    <div class="welcome-card">
-        <h2>Добро пожаловать в StudyBuddy!</h2>
-        <p>Платформа для управления учебным процессом</p>
-    </div>
-    
-    <div class="features">
-        <div class="feature-card">
-            <h3>📅 Расписание</h3>
-            <p>Просмотр расписания занятий</p>
-        </div>
-        <div class="feature-card">
-            <h3>🍽️ Столовые</h3>
-            <p>Информация о столовых и меню</p>
-        </div>
-        <div class="feature-card">
-            <h3>👤 Профиль</h3>
-            <p>Личный кабинет пользователя</p>
+    <!-- НОВЫЕ БЫСТРЫЕ ССЫЛКИ -->
+    <div class="quick-links-section">
+        <h2 style="color: rgb(244, 245, 250);">QUICK LINKS</h2>
+        <div class="quick-links-grid">
+            <a href="https://kbtu.edu.kz/ru/studentam/obshchezhitie" target="_blank" class="quick-link-card">
+                <img src="/dorm.png" alt="dormitory" class="link-icon">
+                <span style="font-weight: bold;">DORMITORY</span>
+            </a>
+            <a href="https://wsp.kbtu.kz/StudentFiles" target="_blank" class="quick-link-card">
+                <img src="/files.png" alt="files" class="link-icon">
+                <span style="font-weight: bold;">STUDENT FILES</span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.kbtu&hl=ru" target="_blank" class="quick-link-card">
+                <img src="/map.png" alt="map" class="link-icon">
+                <span style="font-weight: bold;">KBTU MAP</span>
+            </a>
+            <a href="https://t.me/KBTUNFS" target="_blank" class="quick-link-card">
+                <img src="/tg.png" alt="Telegram" class="link-icon">
+                <span style="font-weight: bold;">TELEGRAM</span>
+            </a>
         </div>
     </div>
 </div>
