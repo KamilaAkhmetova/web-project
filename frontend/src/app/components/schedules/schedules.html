@@ -1,42 +1,41 @@
 <div class="schedule-container">
     <div class="schedule-header">
         <h1>SCHEDULE</h1>
-        <p>{{ currentWeek }} week, {{ semesterType }}</p>
+        <p>{{ currentWeek }} week</p>
     </div>
     
+    <!-- Дни недели -->
     <div class="week-days">
-        <div class="day-header" *ngFor="let day of weekDays">
-            <span class="day-name">{{ day.name }}</span>
-            <span class="day-date">{{ day.date }}</span>
-        </div>
+        <div class="time-column"></div>
+        @for (day of weekDays; track day.index) {
+            <div class="day-header">
+                <div class="day-name">{{ day.name }}</div>
+                <div class="day-date">{{ day.date }}</div>
+            </div>
+        }
     </div>
     
-    <div class="schedule-table">
-        <div class="time-slots">
-            @for (time of timeSlots; track time) {
+    <!-- Расписание -->
+    <div class="schedule-body">
+        @for (time of timeSlots; track time) {
+            <div class="schedule-row">
                 <div class="time-slot">{{ time }}</div>
-            }
-        </div>
-        
-        <div class="schedule-grid">
-            @for (day of weekDays; track day.index) {
-                <div class="day-column">
-                    @for (time of timeSlots; track time) {
-                        <div class="lesson-cell" 
-                             [class.has-lesson]="getLesson(day.index, time)"
-                             (click)="openLessonModal(getLesson(day.index, time))">
-                            
-                            @if (getLesson(day.index, time)) {
-                                <div class="lesson-info">
-                                    <div class="lesson-name">{{ getLesson(day.index, time).course.name }}</div>
-                                    <div class="lesson-type">{{ getLesson(day.index, time).course.get_lesson_type_display }}</div>
-                                    <div class="lesson-room">{{ getLesson(day.index, time).course.room }}</div>
-                                </div>
-                            }
-                        </div>
-                    }
-                </div>
-            }
-        </div>
+                @for (day of weekDays; track day.index) {
+                    @let lesson = getLesson(day.index, time);
+                    <div class="lesson-cell" 
+                         [class.has-lesson]="lesson"
+                         (click)="openLessonModal(lesson)">
+                        @if (lesson) {
+                            <div class="lesson-info">
+                                <div class="lesson-name">{{ lesson.course_name }}</div>
+                                <div class="lesson-type">{{ lesson.lesson_type_display }}</div>
+                                <div class="lesson-room">{{ lesson.room }}</div>
+                                <div class="lesson-lecturer">{{ lesson.lecturer }}</div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
     </div>
 </div>

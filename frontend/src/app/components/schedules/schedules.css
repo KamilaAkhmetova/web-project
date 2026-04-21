@@ -1,0 +1,119 @@
+.schedule-container {
+    padding: 20px;
+    overflow-x: auto;
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+.schedule-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.schedule-header h1 {
+    color: #002F6C;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.week-days {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr);
+    background: #002F6C;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.time-column {
+    background: #002F6C;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.day-header {
+    padding: 12px;
+    text-align: center;
+    color: white;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.day-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.day-date {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.schedule-body {
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
+
+.schedule-row {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr);
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-row:last-child {
+    border-bottom: none;
+}
+
+.time-slot {
+    padding: 12px 8px;
+    background: #f8f9fa;
+    font-size: 12px;
+    text-align: center;
+    border-right: 1px solid #eee;
+    font-weight: 500;
+}
+
+.lesson-cell {
+    min-height: 70px;
+    padding: 6px;
+    border-right: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.lesson-cell:hover {
+    background: #e3f2fd;
+}
+
+.lesson-cell.has-lesson {
+    background: #e8f4fd;
+}
+
+.lesson-info {
+    font-size: 11px;
+}
+
+.lesson-name {
+    font-weight: bold;
+    color: #002F6C;
+    margin-bottom: 4px;
+}
+
+.lesson-type {
+    color: #4aa3df;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.lesson-room {
+    color: #666;
+    font-size: 10px;
+}
+
+.lesson-lecturer {
+    color: #888;
+    font-size: 9px;
+}
