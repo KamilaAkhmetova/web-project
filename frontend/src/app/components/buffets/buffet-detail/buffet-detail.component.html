@@ -1,0 +1,60 @@
+<div class="container">
+  @if (isLoading) {
+    <div class="loading">Loading...</div>
+  }
+
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  @if (buffet) {
+    <button class="back-btn" routerLink="/buffets">← Back to buffets</button>
+
+    <div class="buffet-header">
+      <h1>{{ buffet.name }}</h1>
+      <span class="status-badge" [class]="buffet.status === 'Open' ? 'status-open' : 'status-closed'">
+        {{ buffet.status }}
+      </span>
+    </div>
+
+    <p class="address">📍 {{ buffet.address }}</p>
+
+    <!-- Opening hours section with click event -->
+    <div class="hours-section">
+      <button (click)="toggleHours()" class="toggle-btn">
+        {{ showHours ? 'Hide' : 'Show' }} opening hours
+      </button>
+
+      @if (showHours) {
+        <div class="hours-list">
+          @for (hour of buffet.hours; track hour.day) {
+            <div class="hour-row">
+              <span class="day">{{ hour.day }}</span>
+              <span class="time">{{ hour.hours }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Menu section -->
+    <div class="menu-section">
+      <h2>Menu</h2>
+      <div class="food-grid">
+        @for (food of buffet.foods; track food.id) {
+          <div class="food-card">
+            <h3>{{ food.name }}</h3>
+            <p class="description">{{ food.description }}</p>
+            <div class="prices">
+              <span class="price">Student: {{ food.price_student }} Kč</span>
+              <span class="price">Employee: {{ food.price_employee }} Kč</span>
+              <span class="price">Guest: {{ food.price_guest }} Kč</span>
+            </div>
+          </div>
+        } @empty {
+          <p>No menu items available.</p>
+        }
+      </div>
+    </div>
+  }
+</div>

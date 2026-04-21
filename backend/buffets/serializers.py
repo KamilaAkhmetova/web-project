@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Buffet, OpeningHours, Food
 
-# ModelSerializer #1
 class BuffetListSerializer(serializers.ModelSerializer):
     status = serializers.ReadOnlyField()
     
@@ -9,14 +8,12 @@ class BuffetListSerializer(serializers.ModelSerializer):
         model = Buffet
         fields = ['id', 'name', 'address', 'is_temporarily_closed', 'status', 'image_url']
 
-# ModelSerializer #2
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = ['id', 'name', 'description', 'price_student', 'price_employee', 
-                  'price_guest', 'category', 'is_available']
+        fields = ['id', 'buffet', 'name', 'description', 'price_student', 
+                  'price_employee', 'price_guest', 'category', 'is_available']
 
-# Regular Serializer #1
 class OpeningHoursSerializer(serializers.Serializer):
     day = serializers.CharField(source='get_day_display')
     hours = serializers.SerializerMethodField()
@@ -26,7 +23,6 @@ class OpeningHoursSerializer(serializers.Serializer):
             return "Closed"
         return f"{obj.open_time.strftime('%H:%M')} - {obj.close_time.strftime('%H:%M')}"
 
-# Regular Serializer #2
 class BuffetDetailSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
