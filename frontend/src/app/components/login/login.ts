@@ -33,12 +33,17 @@ export class LoginComponent {
 
         this.authService.login(this.username, this.password).subscribe({
             next: (response) => {
-              console.log('Login response:', response);
-              this.authService.setCurrentUser(response.user);
-              this.router.navigate(['/profile']);
+                if (response.access) {
+                    localStorage.setItem('access_token', response.access);
+                }
+                if (response.refresh) {
+                    localStorage.setItem('refresh_token', response.refresh);
+                }
+                this.authService.setCurrentUser(response.user);
+                this.router.navigate(['/profile']);
             },
             error: (error) => {
-                this.errorMessage = error.error?.error || 'Ошибка входа. Проверьте данные.';
+                this.errorMessage = error.error?.error || 'Ошибка входа';
                 this.isLoading = false;
             }
         });

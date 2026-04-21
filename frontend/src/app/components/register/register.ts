@@ -18,7 +18,7 @@ export class RegisterComponent {
         password: '',
         password2: '',
         full_name: '',
-        practice_group: ''
+        faculty: ''
     };
     errorMessage = '';
     successMessage = '';

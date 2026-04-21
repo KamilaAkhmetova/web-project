@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     "corsheaders",  
     "studybuddy", 
     "auth_app",
-    'buffets',
+    "buffets",
     "dashboard",
     "schedules",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ DATABASES = {
         'PORT': config('DB_PORT'),
     }
 }
+
 print("DB:", config('DB_NAME'))
 # DATABASES = {
 #     'default': {
@@ -137,7 +139,8 @@ STATIC_URL = "static/"
 # REST Framework настройки
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  
+        'rest_framework.authentication.SessionAuthentication',        
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -161,7 +164,11 @@ AUTH_USER_MODEL = 'studybuddy.User'
 
 
 from datetime import timedelta
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
