@@ -7,59 +7,76 @@ from django.shortcuts import get_object_or_404
 from .models import Buffet, Food
 from .serializers import BuffetListSerializer, BuffetDetailSerializer, FoodSerializer
 
-# ========== CLASS-BASED VIEWS (2 штуки) ==========
+# ========== CBV ДЛЯ BUFFETS ==========
 
-# CBV #1: List all buffets
 class BuffetListAPIView(APIView):
     permission_classes = [AllowAny]
     
     def get(self, request):
-        buffets = Buffet.objects.with_food_count()
+        buffets = Buffet.objects.all()
         serializer = BuffetListSerializer(buffets, many=True)
         return Response({
             'success': True,
             'count': len(serializer.data),
             'data': serializer.data
         })
-
-# CBV #2: Food detail (CRUD for Food)
-class FoodDetailAPIView(APIView):
-    permission_classes = [AllowAny]
-    
-    def get(self, request, pk):
-        food = get_object_or_404(Food, pk=pk)
-        serializer = FoodSerializer(food)
-        return Response(serializer.data)
-    
-class FoodCreateAPIView(APIView):
-    permission_classes = [AllowAny]
     
     def post(self, request):
-        # Проверяем, что buffet_id передан
-        buffet_id = request.data.get('buffet')
-        if not buffet_id:
-            return Response(
-                {'error': 'buffet field is required'}, 
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        
-        # Проверяем, что буфет существует
-        try:
-            buffet = Buffet.objects.get(id=buffet_id)
-        except Buffet.DoesNotExist:
-            return Response(
-                {'error': 'Buffet not found'}, 
-                status=status.HTTP_404_NOT_FOUND
-            )
-        
+        """Создать новый буфет"""
+        serializer = BuffetListSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ========== CBV ДЛЯ FOODS (FULL CRUD) ==========
+
+class FoodListCreateAPIView(APIView):
+    """GET - список всех блюд, POST - создать новое блюдо"""
+    permission_classes = [AllowAny]
+    
+    def get(self, request):
+        foods = Food.objects.all()
+        serializer = FoodSerializer(foods, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
         serializer = FoodSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# ========== FUNCTION-BASED VIEWS (2 штуки) ==========
 
-# FBV #1: Get buffet details with hours and menu
+
+class FoodDetailAPIView(APIView):
+    """GET, PUT, DELETE для одного блюда"""
+    permission_classes = [AllowAny]
+    
+    def get_object(self, pk):
+        return get_object_or_404(Food, pk=pk)
+    
+    def get(self, request, pk):
+        food = self.get_object(pk)
+        serializer = FoodSerializer(food)
+        return Response(serializer.data)
+    
+    def put(self, request, pk):
+        food = self.get_object(pk)
+        serializer = FoodSerializer(food, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk):
+        food = self.get_object(pk)
+        food.delete()
+        return Response({'message': 'Food deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+
+
+# ========== FBV ==========
+
 @api_view(['GET'])
 def buffet_detail_view(request, buffet_id):
     buffet = get_object_or_404(Buffet, id=buffet_id)
@@ -69,7 +86,7 @@ def buffet_detail_view(request, buffet_id):
         'data': serializer.data
     })
 
-# FBV #2: Search foods by name
+
 @api_view(['GET'])
 def search_foods_view(request):
     query = request.query_params.get('q', '')
