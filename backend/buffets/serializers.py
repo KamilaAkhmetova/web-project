@@ -13,8 +13,8 @@ class BuffetListSerializer(serializers.ModelSerializer):
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = ['id', 'name', 'description', 'price_student', 'price_employee', 
-                  'price_guest', 'category', 'is_available']
+        fields = ['id', 'buffet', 'name', 'description', 'price_student', 
+                  'price_employee', 'price_guest', 'category', 'is_available']
 
 # Regular Serializer #1
 class OpeningHoursSerializer(serializers.Serializer):

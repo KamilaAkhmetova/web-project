@@ -30,7 +30,33 @@ class FoodDetailAPIView(APIView):
         food = get_object_or_404(Food, pk=pk)
         serializer = FoodSerializer(food)
         return Response(serializer.data)
-
+    
+class FoodCreateAPIView(APIView):
+    permission_classes = [AllowAny]
+    
+    def post(self, request):
+        # Проверяем, что buffet_id передан
+        buffet_id = request.data.get('buffet')
+        if not buffet_id:
+            return Response(
+                {'error': 'buffet field is required'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Проверяем, что буфет существует
+        try:
+            buffet = Buffet.objects.get(id=buffet_id)
+        except Buffet.DoesNotExist:
+            return Response(
+                {'error': 'Buffet not found'}, 
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        serializer = FoodSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 # ========== FUNCTION-BASED VIEWS (2 штуки) ==========
 
 # FBV #1: Get buffet details with hours and menu

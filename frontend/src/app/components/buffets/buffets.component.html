@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>🍽️ BUFFETS</h1>
+
+  <!-- Account balance section -->
+  <div class="account-balance">
+    <div class="balance-info">
+      <span class="balance-label">Account balance</span>
+      <span class="balance-amount">92€ ~ 5 CZK</span>
+    </div>
+    <button class="charge-btn" (click)="loadBuffets()">CHARGE</button>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="searchName"
+      (ngModelChange)="applyFilters()"
+      placeholder="🔍 Search by name..."
+      class="filter-input"
+    />
+    <input
+      type="text"
+      [(ngModel)]="searchAddress"
+      (ngModelChange)="applyFilters()"
+      placeholder="📍 Search by address..."
+      class="filter-input"
+    />
+    <select [(ngModel)]="statusFilter" (ngModelChange)="applyFilters()" class="filter-select">
+      <option value="all">All</option>
+      <option value="open">Open now</option>
+      <option value="closed">Closed</option>
+    </select>
+    <button (click)="clearFilters()" class="clear-btn">Clear filters</button>
+  </div>
+
+  <!-- Loading state -->
+  @if (isLoading) {
+    <div class="loading">Loading buffets...</div>
+  }
+
+  <!-- Error message -->
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  <!-- Buffet list -->
+  <div class="buffet-grid">
+    @for (buffet of filteredBuffets; track buffet.id) {
+      <div class="buffet-card" [routerLink]="['/buffets', buffet.id]">
+        <div class="card-header">
+          <h3>{{ buffet.name }}</h3>
+          <span class="status-badge" [class]="getStatusClass(buffet.status)">
+            {{ buffet.status }}
+          </span>
+        </div>
+        <p class="address">📍 {{ buffet.address }}</p>
+      </div>
+    } @empty {
+      <div class="no-results">No buffets found.</div>
+    }
+  </div>
+</div>
