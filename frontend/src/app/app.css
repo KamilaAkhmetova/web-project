@@ -32,6 +32,7 @@ header {
     border: none;
     cursor: pointer;
     padding: 10px;
+    margin-left: 8px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -133,4 +134,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.header-2 > .logo:last-child {
+    margin-right: 14px;
 }

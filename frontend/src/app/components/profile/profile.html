@@ -1,51 +1,84 @@
-<div class="profile-container">
-    <div class="profile-card" *ngIf="!isLoading && user">
-        <div class="kbtu-header">
-            <h1>KAZAKH-BRITISH<br>TECHNICAL UNIVERSITY</h1>
-        </div>
-        
-        <div class="profile-header">
-            <div class="avatar">
-                <div class="avatar-circle">{{ (user.full_name?.charAt(0)) || user.username.charAt(0) }}</div>
+<div class="profile-page" *ngIf="!isLoading && user">
+    <div class="profile-shell">
+        <section class="hero-card">
+            <div class="hero-banner"></div>
+            <div class="hero-avatar">
+                <div class="avatar-text">{{ (user.full_name ? user.full_name.charAt(0) : user.username ? user.username.charAt(0) : '?') }}</div>
             </div>
-            <h2>{{ user.full_name || user.username }}</h2>
-            <p class="role" [class.teacher]="user.is_teacher">
-                {{ user.is_teacher ? 'Преподаватель' : 'Студент' }}
-            </p>
-        </div>
-        
-        <div class="profile-info">
-            <div class="info-item">
-                <span class="label">ID:</span>
-                <span class="value">{{ user.id }}</span>
+        </section>
+
+        <div class="section-title">PERSONAL INFORMATION</div>
+
+        <section class="profile-content" *ngIf="!editMode">
+            <div class="info-list">
+                <div class="info-item">
+                    <div class="info-label">Name</div>
+                    <div class="info-value">{{ user.full_name || 'Not specified' }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">User ID</div>
+                    <div class="info-value">{{ user.id }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Login</div>
+                    <div class="info-value">{{ user.username }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">{{ user.email }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Faculty</div>
+                    <div class="info-value">{{ user.practice_group || 'Not specified' }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">{{ user.phone || 'Not specified' }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">{{ user.is_teacher ? 'Teacher' : 'Student' }}</div>
+                </div>
             </div>
-            <div class="info-item">
-                <span class="label">Username:</span>
-                <span class="value">{{ user.username }}</span>
+            <div class="actions-row">
+                <button type="button" class="btn-primary" (click)="toggleEditMode()">Edit profile</button>
             </div>
-            <div class="info-item">
-                <span class="label">Email:</span>
-                <span class="value">{{ user.email }}</span>
+        </section>
+
+        <section class="profile-content edit-section" *ngIf="editMode">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName">Full name</label>
+                    <input id="fullName" type="text" class="form-control" [(ngModel)]="editData.full_name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="text" class="form-control" [(ngModel)]="editData.phone">
+                </div>
             </div>
-            <div class="info-item">
-                <span class="label">Полное имя:</span>
-                <span class="value">{{ user.full_name || 'Не указано' }}</span>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="group">Faculty</label>
+                    <input id="group" type="text" class="form-control" [(ngModel)]="editData.practice_group">
+                </div>
             </div>
-            <div class="info-item">
-                <span class="label">Группа:</span>
-                <span class="value">{{ user.practice_group || 'Не указано' }}</span>
+            <div class="actions-row">
+                <button type="button" class="btn-primary" (click)="saveProfile()">Save</button>
+                <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
             </div>
-        </div>
-        
-        <button class="btn-logout" (click)="logout()">Выйти из системы</button>
+        </section>
     </div>
-    
-    <div class="loading" *ngIf="isLoading">
-        <div class="spinner"></div>
-        <p>Загрузка профиля...</p>
-    </div>
-    
-    <div class="error-message" *ngIf="errorMessage">
-        {{ errorMessage }}
+</div>
+
+<div class="loading-fullscreen" *ngIf="isLoading">
+    <div class="spinner-large"></div>
+    <p>Loading profile...</p>
+</div>
+
+<div class="error-fullscreen" *ngIf="errorMessage">
+    <div class="error-box">
+        <span class="error-icon">⚠️</span>
+        <p>{{ errorMessage }}</p>
+        <button class="btn-retry" (click)="loadProfile()">Try again</button>
     </div>
 </div>

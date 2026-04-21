@@ -21,7 +21,7 @@
             <li><a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Main</a></li>
             <li><a routerLink="/schedules" routerLinkActive="active" (click)="closeMenu()">Schedule</a></li>
             <li><a routerLink="/buffets" routerLinkActive="active" (click)="closeMenu()">Canteens</a></li>
-            <li><a routerLink="/account" routerLinkActive="active" (click)="closeMenu()">Profile</a></li>
+            <li><a routerLink="/profile" routerLinkActive="active" (click)="closeMenu()">Profile</a></li>
             @if (!isLoggedIn()) {
                 <li><a routerLink="/login" routerLinkActive="active" (click)="closeMenu()">Log in</a></li>
             }
