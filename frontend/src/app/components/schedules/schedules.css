@@ -18,7 +18,7 @@
 
 .week-days {
     display: grid;
-    grid-template-columns: 80px repeat(5, 1fr);
+    grid-template-columns: 80px repeat(7, 1fr);
     background: #002F6C;
     border-radius: 12px 12px 0 0;
     overflow: hidden;
@@ -59,7 +59,7 @@
 
 .schedule-row {
     display: grid;
-    grid-template-columns: 80px repeat(5, 1fr);
+    grid-template-columns: 80px repeat(7, 1fr);
     border-bottom: 1px solid #eee;
 }
 
