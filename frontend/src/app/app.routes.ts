@@ -7,6 +7,7 @@ import { Account } from './components/account/account';
 import { LoginComponent } from './components/login/login';
 import { RegisterComponent } from './components/register/register';
 import { ProfileComponent } from './components/profile/profile';
+import { CourseRegistrationComponent } from './components/course-registration/course-registration';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -17,6 +18,8 @@ export const routes: Routes = [
     { path: 'buffets', component: BuffetsComponent },
     { path: 'buffets/:id', component: BuffetDetailComponent },  // ← исправлено
     { path: 'account', component: Account },
+    { path: 'courses/register', component: CourseRegistrationComponent },
     { path: '', component: DashboardComponent },
-    { path: '**', redirectTo: '/dashboard' }
+    { path: '**', redirectTo: '/dashboard' },
+    
 ];

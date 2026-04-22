@@ -1,17 +1,4 @@
-export interface Lesson {
-    id: number;
-    course: number;
-    course_name: string;
-    course_code: string;
-    lesson_type: string;
-    lesson_type_display: string;
-    lecturer: string;
-    room: string;
-    day_of_week: number;
-    day_display: string;
-    start_time: string;
-    end_time: string;
-}
+import { Lesson } from './lesson';
 
 export interface ScheduleItem {
     id: number;

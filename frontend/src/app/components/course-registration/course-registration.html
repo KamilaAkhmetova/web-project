@@ -1,0 +1,33 @@
+<div class="registration-container">
+    <div class="registration-header">
+        <h1>📚 Course Registration</h1>
+        <p>Select the courses you want to enroll in</p>
+    </div>
+
+    @if (isLoading) {
+        <div class="loading">Loading courses...</div>
+    } @else {
+        <div class="courses-list">
+            @for (course of courses; track course.id) {
+                <div class="course-item">
+                    <label class="course-checkbox">
+                        <input type="checkbox" [(ngModel)]="selectedCourses[course.id]">
+                        <div class="course-info">
+                            <div class="course-code">{{ course.code }}</div>
+                            <div class="course-name">{{ course.name }}</div>
+                            <div class="course-credits">{{ course.credits }} credits</div>
+                            <div class="course-description">{{ course.description }}</div>
+                        </div>
+                    </label>
+                </div>
+            }
+        </div>
+
+        <div class="registration-actions">
+            <button class="register-btn" (click)="register()" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Registering...' : 'Register Selected Courses' }}
+            </button>
+            <button class="cancel-btn" routerLink="/dashboard">Cancel</button>
+        </div>
+    }
+</div>

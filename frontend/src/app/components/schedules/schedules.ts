@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ScheduleService } from '../../services/schedule';
-import { ScheduleItem, Lesson } from '../../models/schedule';
+import { ScheduleItem } from '../../models/schedule';
+import { Lesson } from '../../models/lesson';
 
 @Component({
   selector: 'app-schedules',
