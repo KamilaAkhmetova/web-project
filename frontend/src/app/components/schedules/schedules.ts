@@ -69,11 +69,13 @@ export class Schedules implements OnInit {
     }
     
     loadSchedule() {
+        this.scheduleMap.clear();
         this.scheduleService.getMySchedule().subscribe({
             next: (data) => {
                 data.forEach(item => {
                     const lesson = item.lesson_details;
-                    const key = `${lesson.day_of_week}_${lesson.start_time}`;
+                    const normalizedStartTime = this.normalizeTime(lesson.start_time);
+                    const key = `${lesson.day_of_week}_${normalizedStartTime}`;
                     this.scheduleMap.set(key, lesson);
                 });
                 this.isLoading = false;
@@ -83,6 +85,13 @@ export class Schedules implements OnInit {
                 this.isLoading = false;
             }
         });
+    }
+
+    private normalizeTime(time: string): string {
+        const parts = time.split(':');
+        const hours = parts[0] ?? '0';
+        const minutes = parts[1] ?? '00';
+        return `${Number(hours)}:${minutes.padStart(2, '0')}`;
     }
     
     getLesson(dayIndex: number, timeSlot: string): Lesson | null {
