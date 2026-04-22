@@ -18,7 +18,7 @@ export class RegisterComponent {
         password: '',
         password2: '',
         full_name: '',
-        faculty: ''
+        practice_group: ''
     };
     errorMessage = '';
     successMessage = '';
@@ -28,6 +28,39 @@ export class RegisterComponent {
         private authService: AuthService,
         private router: Router
     ) {}
+
+    private formatError(errorBody: any): string {
+        if (!errorBody) {
+            return 'Registration failed. Please check your data.';
+        }
+
+        if (typeof errorBody === 'string') {
+            return errorBody;
+        }
+
+        if (errorBody.detail) {
+            return errorBody.detail;
+        }
+
+        if (errorBody.error) {
+            return errorBody.error;
+        }
+
+        if (errorBody.non_field_errors) {
+            return `Error: ${errorBody.non_field_errors.join(', ')}`;
+        }
+
+        const fieldErrors = Object.entries(errorBody)
+            .map(([field, value]) => {
+                if (Array.isArray(value)) {
+                    return `${field}: ${value.join(', ')}`;
+                }
+                return `${field}: ${String(value)}`;
+            })
+            .join(' | ');
+
+        return fieldErrors || 'Registration failed. Please check your data.';
+    }
 
     onSubmit() {
         if (this.userData.password !== this.userData.password2) {
@@ -47,15 +80,7 @@ export class RegisterComponent {
                 }, 2000);
             },
             error: (error) => {
-                if (error.error?.password) {
-                    this.errorMessage = 'Пароль: ' + error.error.password.join(', ');
-                } else if (error.error?.username) {
-                    this.errorMessage = 'Username: ' + error.error.username.join(', ');
-                } else if (error.error?.email) {
-                    this.errorMessage = 'Email: ' + error.error.email.join(', ');
-                } else {
-                    this.errorMessage = 'Ошибка регистрации. Проверьте данные.';
-                }
+                this.errorMessage = this.formatError(error.error);
                 this.isLoading = false;
             }
         });
