@@ -44,6 +44,7 @@ class Buffet(models.Model):
         return "Closed"
 
 class OpeningHours(models.Model):
+    id = models.BigAutoField(primary_key=True)
     DAYS = [
         (0, 'Monday'),
         (1, 'Tuesday'),

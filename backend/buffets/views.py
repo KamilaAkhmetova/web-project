@@ -6,7 +6,54 @@ from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 from .models import Buffet, Food
 from .serializers import BuffetListSerializer, BuffetDetailSerializer, FoodSerializer
+from rest_framework.decorators import api_view, permission_classes
+from .models import OpeningHours
+from .serializers import OpeningHoursSerializer
 
+# ========== CBV ДЛЯ OPENING HOURS (FULL CRUD) ==========
+
+class OpeningHoursListCreateAPIView(APIView):
+    """GET - список всех часов работы, POST - создать новые часы работы"""
+    permission_classes = [AllowAny]
+    
+    def get(self, request):
+        hours = OpeningHours.objects.all()
+        serializer = OpeningHoursSerializer(hours, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = OpeningHoursSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OpeningHoursDetailAPIView(APIView):
+    """GET, PUT, DELETE для одного объекта часов работы"""
+    permission_classes = [AllowAny]
+    
+    def get_object(self, pk):
+        return get_object_or_404(OpeningHours, pk=pk)
+    
+    def get(self, request, pk):
+        hours = self.get_object(pk)
+        serializer = OpeningHoursSerializer(hours)
+        return Response(serializer.data)
+    
+    def put(self, request, pk):
+        hours = self.get_object(pk)
+        serializer = OpeningHoursSerializer(hours, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk):
+        hours = self.get_object(pk)
+        hours.delete()
+        return Response({'message': 'Opening hours deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+    
 # ========== CBV ДЛЯ BUFFETS ==========
 
 class BuffetListAPIView(APIView):
@@ -78,6 +125,7 @@ class FoodDetailAPIView(APIView):
 # ========== FBV ==========
 
 @api_view(['GET'])
+@permission_classes([AllowAny]) 
 def buffet_detail_view(request, buffet_id):
     buffet = get_object_or_404(Buffet, id=buffet_id)
     serializer = BuffetDetailSerializer(buffet)
@@ -88,6 +136,7 @@ def buffet_detail_view(request, buffet_id):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def search_foods_view(request):
     query = request.query_params.get('q', '')
     if not query:

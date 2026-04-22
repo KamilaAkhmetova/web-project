@@ -13,6 +13,7 @@ class FoodSerializer(serializers.ModelSerializer):
         model = Food
         fields = ['id', 'buffet', 'name', 'description', 'price_student', 
                   'price_employee', 'price_guest', 'category', 'is_available']
+        read_only_fields = ['id']
 
 class OpeningHoursSerializer(serializers.Serializer):
     day = serializers.CharField(source='get_day_display')
@@ -23,6 +24,11 @@ class OpeningHoursSerializer(serializers.Serializer):
             return "Closed"
         return f"{obj.open_time.strftime('%H:%M')} - {obj.close_time.strftime('%H:%M')}"
 
+class OpeningHoursSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OpeningHours
+        fields = ['id', 'buffet', 'day', 'open_time', 'close_time', 'is_closed']
+        
 class BuffetDetailSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
