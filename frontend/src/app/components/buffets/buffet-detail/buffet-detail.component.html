@@ -19,23 +19,7 @@
 
     <p class="address">📍 {{ buffet.address }}</p>
 
-    <!-- Opening hours section with click event -->
-    <div class="hours-section">
-      <button (click)="toggleHours()" class="toggle-btn">
-        {{ showHours ? 'Hide' : 'Show' }} opening hours
-      </button>
-
-      @if (showHours) {
-        <div class="hours-list">
-          @for (hour of buffet.hours; track hour.day) {
-            <div class="hour-row">
-              <span class="day">{{ hour.day }}</span>
-              <span class="time">{{ hour.hours }}</span>
-            </div>
-          }
-        </div>
-      }
-    </div>
+   
 
     <!-- Menu section -->
     <div class="menu-section">
@@ -46,9 +30,9 @@
             <h3>{{ food.name }}</h3>
             <p class="description">{{ food.description }}</p>
             <div class="prices">
-              <span class="price">Student: {{ food.price_student }} Kč</span>
-              <span class="price">Employee: {{ food.price_employee }} Kč</span>
-              <span class="price">Guest: {{ food.price_guest }} Kč</span>
+              <span class="price">Student: {{ food.price_student }} ₸</span>
+              <span class="price">Employee: {{ food.price_employee }} ₸</span>
+              <span class="price">Guest: {{ food.price_guest }} ₸</span>
             </div>
           </div>
         } @empty {
@@ -58,3 +42,4 @@
     </div>
   }
 </div>
+

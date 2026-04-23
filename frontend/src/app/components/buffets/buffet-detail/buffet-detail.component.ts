@@ -15,7 +15,6 @@ export class BuffetDetailComponent implements OnInit {
   buffet: BuffetDetail | null = null;
   isLoading = true;
   errorMessage = '';
-  showHours = true;  // для (click) события
 
   constructor(
     private route: ActivatedRoute,
@@ -44,9 +43,5 @@ export class BuffetDetailComponent implements OnInit {
         console.error(error);
       }
     });
-  }
-
-  toggleHours(): void {
-    this.showHours = !this.showHours;
   }
 }
