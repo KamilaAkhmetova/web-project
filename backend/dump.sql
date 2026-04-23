@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
-\restrict usGSNiEWwtuj4b5a2wdhEgRjWpR4rWIXc6PwtcOLQzabmTeenR9gPichjzCg7o5
-
--- Dumped from database version 14.20 (Homebrew)
--- Dumped by pg_dump version 14.20 (Homebrew)
+-- Dumped from database version 16.2
+-- Dumped by pg_dump version 16.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -571,14 +569,14 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 42	Can change Course	11	change_course
 43	Can delete Course	11	delete_course
 44	Can view Course	11	view_course
-45	Can add Lesson	12	add_lesson
-46	Can change Lesson	12	change_lesson
-47	Can delete Lesson	12	delete_lesson
-48	Can view Lesson	12	view_lesson
-49	Can add schedule	13	add_schedule
-50	Can change schedule	13	change_schedule
-51	Can delete schedule	13	delete_schedule
-52	Can view schedule	13	view_schedule
+45	Can add schedule	12	add_schedule
+46	Can change schedule	12	change_schedule
+47	Can delete schedule	12	delete_schedule
+48	Can view schedule	12	view_schedule
+49	Can add Lesson	13	add_lesson
+50	Can change Lesson	13	change_lesson
+51	Can delete Lesson	13	delete_lesson
+52	Can view Lesson	13	view_lesson
 \.
 
 
@@ -596,8 +594,8 @@ COPY public.buffets_buffet (id, name, address, is_temporarily_closed, image_url)
 --
 
 COPY public.buffets_food (id, name, description, price_student, price_employee, price_guest, category, is_available, created_at, buffet_id) FROM stdin;
-1	Рис		400.00	200.00	500.00	Гарнир	t	2026-04-21 20:22:09.871993+05	1
-2	Черный чай		200.00	100.00	400.00	Чай	t	2026-04-21 20:44:35.711793+05	1
+1	Рис		400.00	200.00	500.00	Гарнир	t	2026-04-21 15:22:09.871993+00	1
+2	Черный чай		200.00	100.00	400.00	Чай	t	2026-04-21 15:44:35.711793+00	1
 \.
 
 
@@ -621,12 +619,12 @@ COPY public.buffets_openinghours (id, day, open_time, close_time, is_closed, buf
 --
 
 COPY public.dashboard_news (id, title, content, date) FROM stdin;
-1	МЕЖФАКУЛЬТЕТСКИЙ ЧЕМПИОНАТ КБТУ ПО ШАХМАТАМ	Анонсируем самый массовый внутренний шахматный турнир учебного года – межфакультетский чемпионат КБТУ среди студентов и магистрантов. Он начнётся в среду, 8 апреля в 17:30 в шахматном клубе (Jastar City, актовый зал). Состав команды – трое юношей и одна девушка. За команду могут играть только представители одного и того же факультета/школы.\r\n\r\nКаждый факультет/школа может выставить любое количество команд. Просим (потенциальных) капитанов сформировать свои будущие команды и незадолго до начала турнира представить заявки (и игроков, естественно) в шахматный клуб. Приглашаем и зрителей	2026-04-17 02:30:05.835+05
-2	Приглашение на городской спортивный турнир «ALMA CUP 2026»	Уважаемые студенты!\r\n\r\nПриглашаем вас принять участие в городском спортивном турнире «ALMA CUP 2026», проводимом при поддержке Управления молодежной политики города Алматы.\r\n\r\nТурнир является комплексным мероприятием и включает соревнования по следующему виду спорта:\r\n\r\nлёгкая атлетика\r\nМероприятие направлено на развитие массового спорта, укрепление командного духа и популяризацию здорового образа жизни среди молодежи.	2026-04-17 02:33:05.713+05
-3	Grab a Book	You’re invited to Grab a Book — a free book giveaway organized by the Scientific Library Nurly Aqyl. \r\n✨ Already tomorrow! \r\nThe event will take place in an interactive game format. You will move through different stations, complete simple but engaging challenges, and earn tokens for each task. These tokens can then be exchanged for books — so the more stations you pass, the more books you can take home. \r\nIt’s not just a giveaway, but a full experience: you’ll explore, play, interact, and collect your rewards along the way. \r\nYou will also have a chance to win various prizes, plus enjoy some snacks during the event. The atmosphere is inspired by Stranger Things - we’re waiting for you in the Upside Down 👀 \r\n📅 April 16 \r\n🕙 From 10:00 AM \r\n📍 Foyer of the Scientific Library Nurly Aqyl	2026-04-17 02:33:41.669+05
-4	XCHANGE	Entry by list only\r\nRegistration via manager\r\n📩 Telegram: @ded_vnr – Azhar\r\n\r\nXCHANGE – an intellectual event in TEDx format\r\n\r\nTheme: “Tolyq Adam”\r\n\r\nSpeakers from blogging, law, investment, economics, and education\r\n\r\nWhat to expect:\r\n🎤 talks & insights\r\n🎶 live music\r\n☕️ coffee break\r\n🍽 food from sponsors\r\n🎁 giveaways\r\n📸 photo booth\r\n\r\n📅 April 17\r\n📍 Independence Hall\r\n🕔 17:00\r\n\r\nLimited seats – register in advance and bring your friends 🙌	2026-04-19 20:53:57.484+05
-5	🌸 CRYSTAL PRESENTS💎 ANIME QUIZ	Предлагаем вам окунуться в мир аниме и проверить свои знания! Действительно ли вы знаете своих любимых персонажей?\r\n\r\nСоберите команду от 2 до 9 человек и приходите на наш вечер! Вас ждут интересные вопросы, классная атмосфера, приятное времяпровождение и крутые призы 🎁\r\n\r\n📅 16 апреля\r\n🏛️ КБТУ, 726 кабинет\r\n⏰ 19:00\r\n💰 Билет: 800 тг\r\n\r\n⚡️ Места ограничены - успейте занять место, потом мест не будет!\r\n\r\n🎟 Билеты: \r\n@muhaamedzhannn \r\n@theleol \r\n@zha555eka	2026-04-19 20:55:12.369+05
-6	🎶 TUMAR TUNES – a unique musical evening!	🎁 Win a ticket to the NE PROSTO ORCHESTRA concert!\r\n\r\nWe invite you to an evening filled with live music, a special atmosphere, and vibrant student energy!\r\n\r\n📅 Date: April 3, 2026\r\n⏰ Time: 18:00\r\n📍 Venue: KBTU, Independence Hall\r\n🎟 Ticket price: 1500 KZT\r\n\r\n✨ What awaits you:\r\n• Popular soundtracks from movies and TV series\r\n• Kazakh traditional kui in a unique rock interpretation\r\n• Famous songs – sing-along hits\r\n\r\n🌟 Also featuring:\r\n• Special guest stars\r\n• Guests from: SDU, AUES, UIB, KazGASA, Narxoz\r\n\r\nThis night is a true celebration of music, culture, and student spirit! 🎉\r\n\r\n⚠️ Limited tickets available – don’t miss out!\r\n\r\n📲 For tickets:\r\n• Telegram: @aiigganym | WhatsApp: +7 776 529 0063\r\n• Telegram: @adletzk | WhatsApp: +7 708 392 8349	2026-04-19 20:56:00.979+05
+1	МЕЖФАКУЛЬТЕТСКИЙ ЧЕМПИОНАТ КБТУ ПО ШАХМАТАМ	Анонсируем самый массовый внутренний шахматный турнир учебного года – межфакультетский чемпионат КБТУ среди студентов и магистрантов. Он начнётся в среду, 8 апреля в 17:30 в шахматном клубе (Jastar City, актовый зал). Состав команды – трое юношей и одна девушка. За команду могут играть только представители одного и того же факультета/школы.\r\n\r\nКаждый факультет/школа может выставить любое количество команд. Просим (потенциальных) капитанов сформировать свои будущие команды и незадолго до начала турнира представить заявки (и игроков, естественно) в шахматный клуб. Приглашаем и зрителей	2026-04-16 21:30:05.835+00
+2	Приглашение на городской спортивный турнир «ALMA CUP 2026»	Уважаемые студенты!\r\n\r\nПриглашаем вас принять участие в городском спортивном турнире «ALMA CUP 2026», проводимом при поддержке Управления молодежной политики города Алматы.\r\n\r\nТурнир является комплексным мероприятием и включает соревнования по следующему виду спорта:\r\n\r\nлёгкая атлетика\r\nМероприятие направлено на развитие массового спорта, укрепление командного духа и популяризацию здорового образа жизни среди молодежи.	2026-04-16 21:33:05.713+00
+3	Grab a Book	You’re invited to Grab a Book — a free book giveaway organized by the Scientific Library Nurly Aqyl. \r\n✨ Already tomorrow! \r\nThe event will take place in an interactive game format. You will move through different stations, complete simple but engaging challenges, and earn tokens for each task. These tokens can then be exchanged for books — so the more stations you pass, the more books you can take home. \r\nIt’s not just a giveaway, but a full experience: you’ll explore, play, interact, and collect your rewards along the way. \r\nYou will also have a chance to win various prizes, plus enjoy some snacks during the event. The atmosphere is inspired by Stranger Things - we’re waiting for you in the Upside Down 👀 \r\n📅 April 16 \r\n🕙 From 10:00 AM \r\n📍 Foyer of the Scientific Library Nurly Aqyl	2026-04-16 21:33:41.669+00
+4	XCHANGE	Entry by list only\r\nRegistration via manager\r\n📩 Telegram: @ded_vnr – Azhar\r\n\r\nXCHANGE – an intellectual event in TEDx format\r\n\r\nTheme: “Tolyq Adam”\r\n\r\nSpeakers from blogging, law, investment, economics, and education\r\n\r\nWhat to expect:\r\n🎤 talks & insights\r\n🎶 live music\r\n☕️ coffee break\r\n🍽 food from sponsors\r\n🎁 giveaways\r\n📸 photo booth\r\n\r\n📅 April 17\r\n📍 Independence Hall\r\n🕔 17:00\r\n\r\nLimited seats – register in advance and bring your friends 🙌	2026-04-19 15:53:57.484+00
+5	🌸 CRYSTAL PRESENTS💎 ANIME QUIZ	Предлагаем вам окунуться в мир аниме и проверить свои знания! Действительно ли вы знаете своих любимых персонажей?\r\n\r\nСоберите команду от 2 до 9 человек и приходите на наш вечер! Вас ждут интересные вопросы, классная атмосфера, приятное времяпровождение и крутые призы 🎁\r\n\r\n📅 16 апреля\r\n🏛️ КБТУ, 726 кабинет\r\n⏰ 19:00\r\n💰 Билет: 800 тг\r\n\r\n⚡️ Места ограничены - успейте занять место, потом мест не будет!\r\n\r\n🎟 Билеты: \r\n@muhaamedzhannn \r\n@theleol \r\n@zha555eka	2026-04-19 15:55:12.369+00
+6	🎶 TUMAR TUNES – a unique musical evening!	🎁 Win a ticket to the NE PROSTO ORCHESTRA concert!\r\n\r\nWe invite you to an evening filled with live music, a special atmosphere, and vibrant student energy!\r\n\r\n📅 Date: April 3, 2026\r\n⏰ Time: 18:00\r\n📍 Venue: KBTU, Independence Hall\r\n🎟 Ticket price: 1500 KZT\r\n\r\n✨ What awaits you:\r\n• Popular soundtracks from movies and TV series\r\n• Kazakh traditional kui in a unique rock interpretation\r\n• Famous songs – sing-along hits\r\n\r\n🌟 Also featuring:\r\n• Special guest stars\r\n• Guests from: SDU, AUES, UIB, KazGASA, Narxoz\r\n\r\nThis night is a true celebration of music, culture, and student spirit! 🎉\r\n\r\n⚠️ Limited tickets available – don’t miss out!\r\n\r\n📲 For tickets:\r\n• Telegram: @aiigganym | WhatsApp: +7 776 529 0063\r\n• Telegram: @adletzk | WhatsApp: +7 708 392 8349	2026-04-19 15:56:00.979+00
 \.
 
 
@@ -635,7 +633,15 @@ COPY public.dashboard_news (id, title, content, date) FROM stdin;
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
-1	2026-04-21 20:22:09.873951+05	1	Главная Столовка	1	[{"added": {}}, {"added": {"name": "opening hours", "object": "Monday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Tuesday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Wednesday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Thursday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Friday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Saturday: 08:30:00 - 18:00:00"}}, {"added": {"name": "opening hours", "object": "Sunday: Closed"}}, {"added": {"name": "food", "object": "\\u0420\\u0438\\u0441 - \\u0413\\u043b\\u0430\\u0432\\u043d\\u0430\\u044f \\u0421\\u0442\\u043e\\u043b\\u043e\\u0432\\u043a\\u0430"}}]	7	1
+1	2026-04-16 21:30:05.838+00	1	МЕЖФАКУЛЬТЕТСКИЙ ЧЕМПИОНАТ КБТУ ПО ШАХМАТАМ	1	[{"added": {}}]	10	1
+2	2026-04-16 21:33:05.717+00	2	Приглашение на городской спортивный турнир «ALMA CUP 2026»	1	[{"added": {}}]	10	1
+3	2026-04-16 21:33:41.672+00	3	Grab a Book	1	[{"added": {}}]	10	1
+4	2026-04-19 15:53:57.49+00	4	XCHANGE	1	[{"added": {}}]	10	1
+5	2026-04-19 15:55:12.377+00	5	🌸 CRYSTAL PRESENTS💎 ANIME QUIZ	1	[{"added": {}}]	10	1
+6	2026-04-19 15:56:00.984+00	6	🎶 TUMAR TUNES – a unique musical evening!	1	[{"added": {}}]	10	1
+7	2026-04-20 09:26:23.326683+00	1	INFT2205: Web Development	1	[{"added": {}}]	11	1
+8	2026-04-21 08:00:32.735245+00	1	INFT3210: Field Projects for Information Systems	1	[{"added": {}}, {"added": {"name": "Lesson", "object": "INFT3210 - Lecture (Tuesday)"}}]	11	1
+9	2026-04-21 08:07:33.069626+00	2	INFT2205: Web Development	1	[{"added": {}}, {"added": {"name": "Lesson", "object": "INFT2205 - Lecture (Monday)"}}, {"added": {"name": "Lesson", "object": "INFT2205 - Practice (Thursday)"}}]	11	1
 \.
 
 
@@ -655,8 +661,8 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 9	buffets	openinghours
 10	dashboard	news
 11	schedules	course
-12	schedules	lesson
-13	schedules	schedule
+12	schedules	schedule
+13	schedules	lesson
 \.
 
 
@@ -665,28 +671,28 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2026-04-21 20:03:29.071722+05
-2	contenttypes	0002_remove_content_type_name	2026-04-21 20:03:29.093071+05
-3	auth	0001_initial	2026-04-21 20:03:29.122835+05
-4	auth	0002_alter_permission_name_max_length	2026-04-21 20:03:29.125514+05
-5	auth	0003_alter_user_email_max_length	2026-04-21 20:03:29.127393+05
-6	auth	0004_alter_user_username_opts	2026-04-21 20:03:29.129375+05
-7	auth	0005_alter_user_last_login_null	2026-04-21 20:03:29.131571+05
-8	auth	0006_require_contenttypes_0002	2026-04-21 20:03:29.132779+05
-9	auth	0007_alter_validators_add_error_messages	2026-04-21 20:03:29.135591+05
-10	auth	0008_alter_user_username_max_length	2026-04-21 20:03:29.13747+05
-11	auth	0009_alter_user_last_name_max_length	2026-04-21 20:03:29.139444+05
-12	auth	0010_alter_group_name_max_length	2026-04-21 20:03:29.144989+05
-13	auth	0011_update_proxy_permissions	2026-04-21 20:03:29.147391+05
-14	auth	0012_alter_user_first_name_max_length	2026-04-21 20:03:29.149777+05
-15	studybuddy	0001_initial	2026-04-21 20:03:29.173114+05
-16	admin	0001_initial	2026-04-21 20:03:29.18182+05
-17	admin	0002_logentry_remove_auto_add	2026-04-21 20:03:29.184544+05
-18	admin	0003_logentry_add_action_flag_choices	2026-04-21 20:03:29.189508+05
-19	buffets	0001_initial	2026-04-21 20:03:29.205686+05
-20	dashboard	0001_initial	2026-04-21 20:03:29.20858+05
-21	schedules	0001_initial	2026-04-21 20:03:29.228071+05
-22	sessions	0001_initial	2026-04-21 20:03:29.232858+05
+1	contenttypes	0001_initial	2026-04-20 08:19:41.132972+00
+2	contenttypes	0002_remove_content_type_name	2026-04-20 08:19:41.149622+00
+3	auth	0001_initial	2026-04-20 08:19:41.21735+00
+4	auth	0002_alter_permission_name_max_length	2026-04-20 08:19:41.223388+00
+5	auth	0003_alter_user_email_max_length	2026-04-20 08:19:41.228466+00
+6	auth	0004_alter_user_username_opts	2026-04-20 08:19:41.232402+00
+7	auth	0005_alter_user_last_login_null	2026-04-20 08:19:41.237439+00
+8	auth	0006_require_contenttypes_0002	2026-04-20 08:19:41.239933+00
+9	auth	0007_alter_validators_add_error_messages	2026-04-20 08:19:41.245291+00
+10	auth	0008_alter_user_username_max_length	2026-04-20 08:19:41.250291+00
+11	auth	0009_alter_user_last_name_max_length	2026-04-20 08:19:41.257647+00
+12	auth	0010_alter_group_name_max_length	2026-04-20 08:19:41.270629+00
+13	auth	0011_update_proxy_permissions	2026-04-20 08:19:41.277627+00
+14	auth	0012_alter_user_first_name_max_length	2026-04-20 08:19:41.282625+00
+15	studybuddy	0001_initial	2026-04-20 08:19:41.335516+00
+16	admin	0001_initial	2026-04-20 08:19:41.365528+00
+17	admin	0002_logentry_remove_auto_add	2026-04-20 08:19:41.37486+00
+18	admin	0003_logentry_add_action_flag_choices	2026-04-20 08:19:41.382354+00
+19	buffets	0001_initial	2026-04-20 08:19:41.424678+00
+20	dashboard	0001_initial	2026-04-20 08:19:41.435744+00
+22	sessions	0001_initial	2026-04-20 08:19:41.498433+00
+23	schedules	0001_initial	2026-04-21 07:58:56.939845+00
 \.
 
 
@@ -695,13 +701,12 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
-zkank8k2gnqor62z96jseim9i3d2g5fs	.eJxVjMsOwiAQRf-FtSEwpTxcuvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3DiEbGLxFsorJjGSAwQWlNCr2ypWURw8JzVBAU7LeJtYQrAZHhQuL9wfPFDfJ:1wFCsa:bylFri6Cgwv0eiOKCBO9vGXFOc-peaKl86ojehfGrrM	2026-05-05 20:19:12.0054+05
-kdlpzhaxdg9q2n1pwowi0u2mi1s38yv5	.eJxVjMEOwiAQRP-FsyFQILAevfsNZIFdqRqalPbU-O-2SQ96m8x7M5uIuC41rp3mOBZxFVpcfruE-UXtAOWJ7THJPLVlHpM8FHnSLu9TofftdP8OKva6rwkBtEnOGyCtbVBGIZREoTBwAmuZQrZeIZOjwK54B4Nh2lMatGXx-QLr8TiD:1wEjuT:7VGResCtYLSgEn1MOZ29quL3LNWXC4m1SjxLv-1h4d0	2026-05-04 13:23:13.727095+05
-inwlavjp2275x8lac0e8i2iphzmn8fpf	.eJxVjMEOwiAQRP-FsyFQILAevfsNZIFdqRqalPbU-O-2SQ96m8x7M5uIuC41rp3mOBZxFVpcfruE-UXtAOWJ7THJPLVlHpM8FHnSLu9TofftdP8OKva6rwkBtEnOGyCtbVBGIZREoTBwAmuZQrZeIZOjwK54B4Nh2lMatGXx-QLr8TiD:1wEk8i:fLCkQv_8WgctVL-1iY8io3LUYuVMurrhlI9qIjVwwiY	2026-05-04 13:37:56.320117+05
-1hone5cnfkpx403gsftsgo4rv601rg2k	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEk0m:R5JL3I7dM3sogS-ucDsMZ3VYQc-XCxlAjvjPPc8SLVw	2026-05-04 13:29:44.972+05
-fnjp3mp9fb4ix4iaby0q2c6elyi1owbg	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEUMh:W02ZxCJT_PDYwzh2YRXPtLW-MKuaHGtSvn9gY34eUb8	2026-05-03 20:47:19.005+05
-tg88mq6y5w142u27jmsrhb10ctryzub2	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wDOWb:Jh26cRyT4DzyL0lexOVd_0KyGAoVtV7oGWBTKxXjkMY	2026-04-30 20:21:01.596+05
-cg2jq2c0ap5vk26o6y0td4u19omjadiy	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEkGj:plKZURF77f907O-qGu-ycQYmACbtF0kRWfw3dlNNb6E	2026-05-04 13:46:13.891459+05
+kdlpzhaxdg9q2n1pwowi0u2mi1s38yv5	.eJxVjMEOwiAQRP-FsyFQILAevfsNZIFdqRqalPbU-O-2SQ96m8x7M5uIuC41rp3mOBZxFVpcfruE-UXtAOWJ7THJPLVlHpM8FHnSLu9TofftdP8OKva6rwkBtEnOGyCtbVBGIZREoTBwAmuZQrZeIZOjwK54B4Nh2lMatGXx-QLr8TiD:1wEjuT:7VGResCtYLSgEn1MOZ29quL3LNWXC4m1SjxLv-1h4d0	2026-05-04 08:23:13.727095+00
+inwlavjp2275x8lac0e8i2iphzmn8fpf	.eJxVjMEOwiAQRP-FsyFQILAevfsNZIFdqRqalPbU-O-2SQ96m8x7M5uIuC41rp3mOBZxFVpcfruE-UXtAOWJ7THJPLVlHpM8FHnSLu9TofftdP8OKva6rwkBtEnOGyCtbVBGIZREoTBwAmuZQrZeIZOjwK54B4Nh2lMatGXx-QLr8TiD:1wEk8i:fLCkQv_8WgctVL-1iY8io3LUYuVMurrhlI9qIjVwwiY	2026-05-04 08:37:56.320117+00
+1hone5cnfkpx403gsftsgo4rv601rg2k	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEk0m:R5JL3I7dM3sogS-ucDsMZ3VYQc-XCxlAjvjPPc8SLVw	2026-05-04 08:29:44.972+00
+fnjp3mp9fb4ix4iaby0q2c6elyi1owbg	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEUMh:W02ZxCJT_PDYwzh2YRXPtLW-MKuaHGtSvn9gY34eUb8	2026-05-03 15:47:19.005+00
+tg88mq6y5w142u27jmsrhb10ctryzub2	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wDOWb:Jh26cRyT4DzyL0lexOVd_0KyGAoVtV7oGWBTKxXjkMY	2026-04-30 15:21:01.596+00
+cg2jq2c0ap5vk26o6y0td4u19omjadiy	.eJxVjMsOwiAUBf-FtSE8pAWX7vsN5D5AqgaS0q6M_65NutDtmZnzEhG2tcStpyXOLC5Ci9PvhkCPVHfAd6i3JqnVdZlR7oo8aJdT4_S8Hu7fQYFevrULSmnrSeuElJMBFYhMQGYIGkY7EIfh7Dxmi56tR00jGoMqW-uCUeL9AeysN_A:1wEkGj:plKZURF77f907O-qGu-ycQYmACbtF0kRWfw3dlNNb6E	2026-05-04 08:46:13.891459+00
 \.
 
 
@@ -731,6 +736,8 @@ COPY public.schedules_lesson (id, lesson_type, lecturer, room, day_of_week, star
 --
 
 COPY public.schedules_schedule (id, lesson_id, student_id) FROM stdin;
+1	1	3
+2	2	3
 \.
 
 
@@ -739,7 +746,9 @@ COPY public.schedules_schedule (id, lesson_id, student_id) FROM stdin;
 --
 
 COPY public.studybuddy_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, full_name, phone, practice_group, is_teacher) FROM stdin;
-1	pbkdf2_sha256$1200000$uS8fo2WsXc4IaB7AnZZh8y$q+VbUzEMgJpaMh+s/yYqQaMPt0ND2tjF0O1/RdSq3Jg=	2026-04-21 20:19:12.002318+05	t	admin01			admin@gmail.com	t	t	2026-04-21 20:19:05.889642+05		\N		f
+1	pbkdf2_sha256$1200000$nND2kvp1oMvoeSNkTLP9eC$AYG2eZtCspEHZLOTrcsU85eAicaTOdrsl1tNS/JDimM=	2026-04-20 08:46:13.887305+00	t	kamila			kamila@gmail.com	t	t	2026-04-16 15:19:00.566+00		\N		f
+2	pbkdf2_sha256$1200000$8ET4n31U71QJpu1zhcKZDL$mD9qE4NZhhJIjSq1IGFHswZlJEMkgiWyW7HiCnDhWf0=	\N	f	kamilaAkmetova			k_akhmetova@kbtu.kz	f	t	2026-04-21 18:44:14.924095+00	Kamila Akhmetova	\N		f
+3	pbkdf2_sha256$1200000$rlA7H437jIVK6ff8N2iOKo$J8M5UTgkNyji3Rvf1HerHRsVJsfXD6V36DR21wPLNEE=	\N	f	kamilaaAA			kamila@gml.com	f	t	2026-04-22 20:57:59.781746+00	Kamila Akhmetova	\N	FIT	f
 \.
 
 
@@ -847,7 +856,7 @@ SELECT pg_catalog.setval('public.schedules_lesson_id_seq', 3, true);
 -- Name: schedules_schedule_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.schedules_schedule_id_seq', 1, false);
+SELECT pg_catalog.setval('public.schedules_schedule_id_seq', 2, true);
 
 
 --
@@ -861,7 +870,7 @@ SELECT pg_catalog.setval('public.studybuddy_user_groups_id_seq', 1, false);
 -- Name: studybuddy_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.studybuddy_user_id_seq', 1, true);
+SELECT pg_catalog.setval('public.studybuddy_user_id_seq', 3, true);
 
 
 --
@@ -1335,6 +1344,4 @@ ALTER TABLE ONLY public.studybuddy_user_user_permissions
 --
 -- PostgreSQL database dump complete
 --
-
-\unrestrict usGSNiEWwtuj4b5a2wdhEgRjWpR4rWIXc6PwtcOLQzabmTeenR9gPichjzCg7o5
 
