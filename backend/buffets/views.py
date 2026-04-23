@@ -54,6 +54,7 @@ class OpeningHoursDetailAPIView(APIView):
         hours.delete()
         return Response({'message': 'Opening hours deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
     
+    
 # ========== CBV ДЛЯ BUFFETS ==========
 
 class BuffetListAPIView(APIView):

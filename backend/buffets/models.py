@@ -1,10 +1,8 @@
 from django.db import models
 from datetime import datetime
 
-# Custom Manager
 class BuffetManager(models.Manager):
     def open_now(self):
-        """Return buffets that are open at current time"""
         current_day = datetime.now().weekday()
         current_time = datetime.now().time()
         
@@ -24,7 +22,6 @@ class Buffet(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField()
     is_temporarily_closed = models.BooleanField(default=False)
-
     
     objects = BuffetManager()
     
@@ -44,7 +41,6 @@ class Buffet(models.Model):
         return "Closed"
 
 class OpeningHours(models.Model):
-     
     DAYS = [
         (0, 'Monday'),
         (1, 'Tuesday'),
